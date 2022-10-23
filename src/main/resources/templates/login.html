@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--<html xmlns="http://www.w3.org/1999/xhtml"-->
+<!--      xmlns:th="http://www.thymeleaf.org"-->
+<!--      xmlns:sec="http://www.springframework.org/security/tags" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--      xsi:schemaLocation="http://www.springframework.org/security/tags " lang="en">-->
+<!--<head>-->
+
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <meta name="description" content="Форма входа в лучшее приложение в мире">-->
+<!--    <title>Форма входа в лучшее приложение в мире</title>-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
+<!--          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+<!--    &lt;!&ndash; Bootstrap core CSS &ndash;&gt;-->
+<!--    <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"-->
+<!--          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">-->
+
+<!--    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"-->
+<!--            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"-->
+<!--            crossorigin="anonymous"></script>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"-->
+<!--            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"-->
+<!--            crossorigin="anonymous"></script>-->
+<!--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"-->
+<!--            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"-->
+<!--            crossorigin="anonymous"></script>-->
+
+
+<!--    <style>-->
+<!--        .bd-placeholder-img {-->
+<!--            font-size: 1.125rem;-->
+<!--            text-anchor: middle;-->
+<!--            -webkit-user-select: none;-->
+<!--            -moz-user-select: none;-->
+<!--            user-select: none;-->
+<!--        }-->
+
+<!--        @media (min-width: 768px) {-->
+<!--            .bd-placeholder-img-lg {-->
+<!--                font-size: 3.5rem;-->
+<!--            }-->
+<!--        }-->
+<!--    </style>-->
+
+
+<!--    &lt;!&ndash; Custom styles for this template &ndash;&gt;-->
+<!--    <link href="signin.css" rel="stylesheet">-->
+<!--</head>-->
+<!--<body class="container">-->
+<!--<sec:authorize access="isAuthenticated()">-->
+
+<!--</sec:authorize>-->
+<!--<div class="row justify-content-center">-->
+
+
+<!--    <main class="form-signin">-->
+<!--        <form method="POST" th:action="@{/login}">-->
+<!--            <br/>-->
+<!--            <br/>-->
+<!--            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>-->
+<!--            <div>-->
+<!--                <input name="login" type="email" size="30" class=" form-control" placeholder="Email" autofocus/>-->
+<!--            </div>-->
+
+<!--            <div>-->
+<!--                <input name="password" class="form-control" size="30" type="password" placeholder="Password"/>-->
+<!--            </div>-->
+
+<!--            <div>-->
+<!--                <button type="submit" class="w-100 btn btn-lg btn-primary">Accept</button>-->
+<!--            </div>-->
+
+<!--            <input type="submit" class="btn btn-primary" value="Sing in"/>-->
+<!--        </form>-->
+
+<!--    </main>-->
+
+<!--    <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js"-->
+<!--            integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"-->
+<!--            crossorigin="anonymous"></script>-->
+
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Login page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous" />
+</head>
+<body>
+<div class="container-fluid text-center">
+
+    <form th:action="@{/login}" method="post" style="max-width: 350px; margin: 0 auto;">
+
+        <div th:if="${param.error}">
+            <p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+        </div>
+
+        <div th:if="${param.logout}">
+            <p class="text-warning">You have been logged out.</p>
+        </div>
+
+        <div>
+            <h2 class="text-start" >Please sign in</h2>
+            <p>
+                <input type="email" name="email" size="30" class="form-control"
+                       placeholder="E-mail" required autofocus/>
+            </p>
+            <p>
+                <input type="password" name="password" size="30" class="form-control"
+                       placeholder="Password" required />
+            </p>
+
+            <div class="d-grid gap-2">
+            <p>
+                <input type="submit" value="Sign in" class="w-100 btn btn-lg btn-primary" />
+            </p>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

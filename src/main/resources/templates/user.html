@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://java.sun.com/jsf/composite">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <header class="bd-header bg-dark py-1 d-flex align-items-stretch border-bottom border-dark">
+        <div class="container-fluid d-flex align-items-center">
+            <div class="container alight-items-left">
+                <b>
+                    <text th:text="${user.getEmail()}" class="text-white fw-bolder"></text>
+                </b>
+                <text class="text-white">with roles</text>
+                <text th:text="${user.getStringRoles()}" class="text-white"></text>
+            </div>
+
+
+            <div class="container align-items-right"></div>
+            <a href="/login" class="text-secondary align-items-right" hreflang="ar">Logout</a>
+        </div>
+        </div>
+    </header>
+
+
+    <title>User page</title>
+</head>
+<body>
+
+<div class="row">
+
+    <!--боковая панель-->
+    <div class="col-2">
+        <div class="d-flex flex-column flex-shrink-0 p-10 bg-light">
+            <hr>
+
+            <ul class="nav nav-pills flex-column mb-auto">
+
+                <li>
+                    <a href="/user" class="nav-link active">
+                        <svg class="bi me-2" width="16" height="16">
+                            <use xlink:href="#speedometer2"></use>
+                        </svg>
+                        User
+                    </a>
+            </ul>
+            <hr>
+        </div>
+    </div>
+    <!--конец боковой панели-->
+
+    <div class="col-10">
+        <div class="col-9">
+            <h2 class="text-left">User information-page</h2>
+            <div class="card text-center">
+
+                <div class="card-body">
+
+                    <div class="card-body">
+                        <!--начало таблицы-->
+                        <div class="container-fluid">
+                            <h6 class="text-left">About user</h6>
+
+                            <table class="table table-striped">
+
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Age</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:object="${user}">
+                                    <td th:text="${user.id}"></td>
+                                    <td th:text="${user.getName()}"></td>
+                                    <td th:text="${user.getSurname()}"></td>
+                                    <td th:text="${user.getAge()}"></td>
+                                    <td th:text="${user.getEmail()}"></td>
+                                    <td th:text="${user.getStringRoles()}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <br/>
+
+                        </div>
+
+                        <!--конец таблицы-->
+                    </div>
+
+
+
+                    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                            crossorigin="anonymous"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                            crossorigin="anonymous"></script>
+                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                            crossorigin="anonymous"></script>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
