@@ -21,24 +21,9 @@ public class RoleServiceImpl implements RoleService {
         return roleRepository.findAll();
     }
 
-//    @Override
-//    public boolean add(Role role) {
-//        Role existedRole = roleRepository.findByName(role.getName());
-//        if (!isNull(existedRole)) {
-//            return false;
-//        }
-//        roleRepository.save(role);
-//        return true;
-//    }
-
     @Override
     public Role getByName(String name) {
         return roleRepository.findByName(name);
     }
-
-//    @Override
-//    public void delete(Role role) {
-//        roleRepository.delete(role);
-//    }
 
 }

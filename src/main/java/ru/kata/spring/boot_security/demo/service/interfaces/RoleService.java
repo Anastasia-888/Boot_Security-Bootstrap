@@ -8,9 +8,6 @@ public interface RoleService {
 
     List<Role> findAll();
 
-//    boolean add(Role role);
-
     Role getByName(String name);
 
-//    void delete(Role role);
 }

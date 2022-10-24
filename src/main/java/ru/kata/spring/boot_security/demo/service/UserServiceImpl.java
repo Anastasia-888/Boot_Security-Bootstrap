@@ -33,17 +33,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void update(User newUser) {
-        userRepository.save(newUser);
-    }
-
-    @Override
     public void delete(User user) {
         userRepository.delete(user);
     }
 
-    @Transactional
     @Override
+    @Transactional
     public User getUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }

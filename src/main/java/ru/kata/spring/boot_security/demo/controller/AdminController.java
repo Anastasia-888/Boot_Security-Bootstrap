@@ -56,15 +56,13 @@ public class AdminController {
         List<Role> roles = new ArrayList<>();
         User currentUser = userService.getUserById(user.getId());
         if (allRoles != null) {
-            allRoles.forEach(role -> {
-                roles.add(roleService.getByName(role));
-            });
+            allRoles.forEach(role -> roles.add(roleService.getByName(role)));
             user.setRoles(roles);
         } else {
             user.setRoles(currentUser.getRoles());
         }
         user.setPassword(currentUser.getPassword());
-        userService.update(user);
+        userService.add(user);
         return "redirect:/admin";
     }
 

@@ -12,8 +12,6 @@ public interface UserService {
 
     User getUserById(int id);
 
-    void update(User newUser);
-
     void delete(User user);
 
     User getUserByEmail(String email);
