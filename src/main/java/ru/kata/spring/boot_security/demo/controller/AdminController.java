@@ -52,7 +52,8 @@ public class AdminController {
 
     @PostMapping("/user-update/{id}")
     public String update(@ModelAttribute("user") User user,
-                         @RequestParam(value = "allRoles", required = false) List<String> allRoles) {
+                         @RequestParam(value = "allRoles", required = false) List<String> allRoles,
+                         @PathVariable(value = "id") int id) {
         List<Role> roles = new ArrayList<>();
         User currentUser = userService.getUserById(user.getId());
         if (allRoles != null) {
@@ -62,7 +63,7 @@ public class AdminController {
             user.setRoles(currentUser.getRoles());
         }
         user.setPassword(currentUser.getPassword());
-        userService.add(user);
+        userService.update(user, id);
         return "redirect:/admin";
     }
 
